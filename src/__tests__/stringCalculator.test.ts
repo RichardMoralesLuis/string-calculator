@@ -16,4 +16,16 @@ describe('stringCalculator', () => {
   it('Debería devolver un array de tantos elementos como números separados por comas esten en la entrada', () => {
     expect(stringCalculator('2, 5, 8')).toStrictEqual([2,5,8]);
   });
+
+  it('Debería devolver un array de tantos elementos como números separados por comas esten en la entrada 2', () => {
+    expect(stringCalculator('2, 5')).toStrictEqual([2,5]);
+  });
+
+  it('Debería devolver un array de tantos elementos como números separados por comas esten en la entrada 2', () => {
+    expect(stringCalculator('a, a')).toStrictEqual([]);
+  });
+
+  xit('Debería devolver un array de tantos elementos como números separados por comas esten en la entrada 2', () => {
+    expect(stringCalculator("'a', 'a'")).toStrictEqual([]);
+  });
 });
