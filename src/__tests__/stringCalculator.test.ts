@@ -44,4 +44,8 @@ describe('stringCalculator', () => {
   it('Debería devolver el rango inclusivo de los números que llegan en la entrada separados por guión', () => {
     expect(stringCalculator('5-10')).toStrictEqual([5, 6, 7, 8, 9, 10]);
   });
+
+  it('Debería devolver una array incluyen', () => {
+    expect(stringCalculator('2, 5-10, 13')).toStrictEqual([2, 5, 6, 7, 8, 9, 10, 13]);
+  });
 });
