@@ -28,16 +28,40 @@ const javiFn = (input: string) => {
   return result;
 };
 
+const isNotValidInput = (input: string) => {
+  const items = input.split('=')
+  if (items.length == 1)
+    return /[a-z]/i.test(input);
+  if (isNumber(items[0]))
+    return true;
+  return false;
+};
+
+const translateItem = (item: string, dict:Tuple[]) :string => {
+  let newItem = item
+  dict.forEach(tupla => {
+    newItem = item.replace(tupla[0], ''+tupla[1]);
+  });
+  return newItem;
+};
+
+type Tuple = [string, number];
+
 export const stringCalculator = (input: string) => {
   const items = input.split(',');
-
+  const variables : Tuple[] = [];
   const result: number[] = [];
   for (const item of items) {
-    if (item === 'a') {
+    const tranlateItem = translateItem(item, variables); 
+    if (isNotValidInput(tranlateItem)) {
       return result;
     }
-
-    result.push(...javiFn(item));
+    const dict = tranlateItem.split('=')
+    if (dict.length > 1) {
+      variables.push([dict[0], +dict[1]]);
+      continue;
+    } 
+    result.push(...javiFn(tranlateItem));
   }
   return result;
 };

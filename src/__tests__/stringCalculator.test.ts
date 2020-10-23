@@ -41,11 +41,31 @@ describe('stringCalculator', () => {
     expect(stringCalculator('2,5,a,8')).toStrictEqual([2, 5]);
   });
 
+  it('Debería devolver una array con tantos números como encuentre hasta que se tope con una letra 2', () => {
+    expect(stringCalculator('2,5,b,8')).toStrictEqual([2, 5]);
+  });
+
   it('Debería devolver el rango inclusivo de los números que llegan en la entrada separados por guión', () => {
     expect(stringCalculator('5-10')).toStrictEqual([5, 6, 7, 8, 9, 10]);
   });
 
   it('Debería devolver una array incluyen', () => {
     expect(stringCalculator('2, 5-10, 13')).toStrictEqual([2, 5, 6, 7, 8, 9, 10, 13]);
+  });
+
+  it('Debería devolver una array incluyen 2', () => {
+    expect(stringCalculator('2, a-10, 13')).toStrictEqual([2]);
+  });
+
+  it('Debería devolver una array incluyen 3', () => {
+    expect(stringCalculator('a=2, a-10, 13')).toStrictEqual([2, 3, 4, 5, 6, 7, 8, 9, 10, 13]);
+  });
+
+  it('Debería devolver una array incluyen 4', () => {
+    expect(stringCalculator('b=2, a-10, 13')).toStrictEqual([]);
+  });
+
+  it('Debería devolver una array incluyen 5', () => {
+    expect(stringCalculator('a=2, a, 13')).toStrictEqual([2, 13]);
   });
 });
