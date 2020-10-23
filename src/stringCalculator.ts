@@ -1,3 +1,7 @@
 export const stringCalculator = (input: string) => {
-  return [2];
+  const parsedInput = parseInt(input);
+  if (isNaN(parsedInput)){
+    return []
+  }
+  return [parsedInput];
 };
