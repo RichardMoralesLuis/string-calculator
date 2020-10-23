@@ -40,4 +40,8 @@ describe('stringCalculator', () => {
   it('Debería devolver una array con tantos números como encuentre hasta que se tope con una letra', () => {
     expect(stringCalculator('2,5,a,8')).toStrictEqual([2, 5]);
   });
+
+  it('Debería devolver el rango inclusivo de los números que llegan en la entrada separados por guión', () => {
+    expect(stringCalculator('5-10')).toStrictEqual([5, 6, 7, 8, 9, 10]);
+  });
 });
