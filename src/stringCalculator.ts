@@ -1,22 +1,14 @@
+const isNumber = (item) => {
+  const parsedInput = parseInt(item);
+  return !isNaN(parsedInput);
+};
+
 export const stringCalculator = (input: string) => {
-  if (input.includes(',')) {
-    let items = input.split(',');
-    const areItemsAreNumbers = items.some( (item) => {
-      const parsedInput = parseInt(item);
-      if (isNaN(parsedInput)){
-        return false;
-      }    
-      return true;
-    });
-    if (areItemsAreNumbers) {
-      return JSON.parse("[" + input + "]");
-    } else {
-      return [];
-    }
+  let items = input.split(',');
+  const areItemsAreNumbers = items.some(isNumber);
+  if (!areItemsAreNumbers) {
+    return [];
   }
-  const parsedInput = parseInt(input);
-  if (isNaN(parsedInput)){
-    return []
-  }
-  return [parsedInput];
+
+  return JSON.parse('[' + input + ']');
 };
